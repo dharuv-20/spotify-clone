@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {background-color: grey;
+    margin: 0;
+    margin-top: 70px;
+    margin-left: 100px;
+    margin-bottom: 100%;
+    padding: 20px;}
+  
+
+    .header{
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      background-color:rgb(53, 53, 53);
+      justify-content: space-between;
+      align-items:center;
+      line-height: normal;
+      height: 70px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;   
+      z-index: 1000;
+    }
+    .left-sec{
+      width: 20%;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-items: center;
+      align-items: center;
+      gap: 15px;
+      
+
+    }
+    .middel-sec{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: right;
+      margin-right: 20px;
+      
+      width: 20%;
+      gap: 7px;
+      flex-shrink: 0;
+
+    }
+
+    .right-sec{
+      
+      
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+     }
+
+    .menu-icon{
+      
+      height: 24px;
+      background-color: white;
+      padding: 7px;
+      border-radius: 50%;
+    }
+    .logo-yt{
+      height: 27px;
+      margin: 0;
+      padding: 0;
+      
+
+
+    }
+
+    .upload-icon,.chat-icon,  .mic-icon{
+      height: 24px;
+      background-color: white;
+      padding: 6px;
+      border-radius: 50%;
+    }
+    .search-icon{
+      height: 24px;
+      background-color: white;
+      padding:6px;
+      padding-left:10px;
+      padding-right:10px;
+      border-radius: 0 18px 18px 0;
+
+    }
+    .searchbar{ 
+      
+      height: 36px;
+      width: 60%;
+      margin-left: 5px;
+      border: none;
+      border-radius: 18px 0 0 18px ;
+      margin: 0;
+      margin-left: 13px;
+      padding: 0;
+      padding-left: 13px;
+      font-size: 13px;
+      
+
+      
+
+
+    }
+    .searchbar::placeholder{
+      color: gray;
+      
+      margin: 0;
+      font-size: 13px;
+
+      
+    }
+
+    .searchbar:focus{
+      outline: none;
+      background-color: rgb(230, 230, 230);
+    
+
+      
+    }
+    .profile-info{
+      height: 36px;
+      background-color: white;
+      
+      border-radius: 18px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+    }
+    .profile-icon{
+      height: 30px;
+      width: 30px;
+      object-fit:cover;
+      margin: 4px;
+      
+      border: none;
+      border-radius: 50%;
+    }
+    .name-info{
+      margin: 0;
+      margin-left: 10px;
+      margin-right: 5px;
+      font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+
+    }
+    .button-all:hover{
+      
+      background-color: rgb(175, 175, 175);
+      border-radius: 30%;
+      transition: 1s;
+    }
+        
+    .notification-icon{
+      position: relative;
+      height: 24px;
+      background-color: white;
+      padding: 6px;
+      border-radius: 50%;
+    }
+    .count-notice{
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: rgb(218, 34, 34);
+      
+      width:30%;
+      height: 30%;
+      font-family:Arial, Helvetica, sans-serif;
+      padding: 4px;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 11px;
+
+    }
+    .notification-icon-c{
+      position: relative;
+    }
+
+    .sidebar{
+      background-color: rgb(255, 255, 255);
+      position: fixed;
+      top: 70px;
+      bottom: 0;
+      width: 100px;
+      left: 0;
+      padding-top: 5px;
+
+      
+    } 
+    .sidebar-link{
+      height: 16%;
+      margin-bottom: 3px;
+      background-color: rgb(255, 255, 255);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+
+    }
+
+    .icon-sidebar{
+      height: 50%;
+
+    }
+    .txt{
+      font-size: 13px;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    .sidebar-link:hover{
+      background-color: lightgray;
+      border-radius: 20%;
+      transition: 0.1s;
+      
+    }
+    .main-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr ;
+      column-gap: 20px;
+      row-gap: 20px;
+      align-items: baseline;
+    }
+    .main-grid img{
+      width: 100%;
+      border-radius: 5% 5% 0 0 ;
+     
+      
+    }
+    .v-card{
+      margin: 0px;
+      display: flex;
+      flex-direction: column;
+
+    }
+    .v-info{
+      display: flex;
+      flex-direction: row;
+      background-color: white;
+      margin: 0;
+      object-fit: cover !important;
+      
+    }
+
+    .profile-p{
+      width: 48px;
+      position: relative;
+    }
+
+    .profile-p img{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin: 3px;
+      object-fit: cover;
+    }
+
+    .video-nameinfo p{
+      margin: 0;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .titel-info{
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .channel-info .views{
+      color: grey;
+      font-size: 7px;
+
+    }
+    .time{
+      position:absolute;
+      font-size: 15px;
+      background-color: black;
+      right: 2px;
+      bottom: 5px;
+      color: white;
+      padding: 3px;
+      margin: 0;
+    }
+    .thum{
+      position: relative;
+      padding: 0;
+      margin: 0;
+    }
+    .thum img{
+      object-fit: cover;
+      height: 100%;
+    }
+  
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="left-sec">
+        <img src="icon/menu.png" class="menu-icon button-all" alt="">
+        <img src="icon/Youtube-Logo-White-PNG.png" class="logo-yt">
+
+    </div>
+
+
+    
+
+
+    <div class="right-sec">
+      <img class="mic-icon button-all" src="icon/microphone.png" alt="">
+      <input type="text" class="searchbar" placeholder="Search">
+      <img class="search-icon" src="icon/search.png" alt="">
+      
+    </div>
+
+    <div class="middel-sec">
+
+      <img class="upload-icon button-all" src="icon/image.png" alt="">
+      <img class="chat-icon button-all" src="icon/chat.png" alt="">
+      <div class="notification-icon-c">
+      <img class="notification-icon button-all" src="icon/notification.png" alt="">
+      <div class="count-notice">7</div>
+    </div>
+      <div class="profile-info">
+        <p class="name-info">DHARUV</p>
+        <img class="profile-icon" src="icon/1.JPG" alt="">
+      </div>
+     
+
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="sidebar-link">
+      <img class="icon-sidebar" src="icon/home.png" alt="">
+      <div class="txt">Home</div>
+    </div>
+
+    <div class="sidebar-link">
+      <img class="icon-sidebar" src="icon/play-button.png" alt="">
+      <div class="txt">Shorts</div>
+    </div>
+
+    <div class="sidebar-link">
+      <img class="icon-sidebar" src="icon/explore.png">
+      <div class="txt">Explore</div>
+    </div>
+
+    <div class="sidebar-link">
+      <img class="icon-sidebar" src="icon/subscribe.png" alt="">
+      <div class="txt">Subscriptions</div>
+    </div>
+
+
+    <div class="sidebar-link">
+      <img class="icon-sidebar" src="icon/restore.png" alt="">
+      <div class="txt">History</div>
+    </div>
+    
+    <div class="sidebar-link">
+      <img class="icon-sidebar" src="icon/video.png" alt="">
+      <div class="txt">Watch later</div>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="main-grid">
+
+
+    <div class="v-card">
+      
+
+      <div class="thum">
+        <img src="icon/th1.webp" alt="">
+        <div class="time">11:11</div> </div>
+      <div class="v-info">
+        <div class="profile-p"><img src="icon/1.JPG" alt=""></div>
+        <div class="video-nameinfo">
+          <p class="titel-info">Hi Hlo Are You</p>
+          <p class="channel-info">Dhruv</p>
+          <p class="views">1.2M views</p>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="v-card">
+      
+
+      <div class="thum">
+        <img src="icon/th1.webp" alt="">
+        <div class="time">11:11</div> </div>
+      <div class="v-info">
+        <div class="profile-p"><img src="icon/1.JPG" alt=""></div>
+        <div class="video-nameinfo">
+          <p class="titel-info">Hi Hlo Are You</p>
+          <p class="channel-info">Dhruv</p>
+          <p class="views">1.2M views</p>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="v-card">
+      
+
+      <div class="thum">
+        <img src="icon/th1.webp" alt="">
+        <div class="time">11:11</div> </div>
+      <div class="v-info">
+        <div class="profile-p"><img src="icon/1.JPG" alt=""></div>
+        <div class="video-nameinfo">
+          <p class="titel-info">Hi Hlo Are You</p>
+          <p class="channel-info">Dhruv</p>
+          <p class="views">1.2M views</p>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="v-card">
+      
+
+      <div class="thum">
+        <img src="icon/th1.webp" alt="">
+        <div class="time">11:11</div> </div>
+      <div class="v-info">
+        <div class="profile-p"><img src="icon/1.JPG" alt=""></div>
+        <div class="video-nameinfo">
+          <p class="titel-info">Hi Hlo Are You</p>
+          <p class="channel-info">Dhruv</p>
+          <p class="views">1.2M views</p>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="v-card">
+      
+
+      <div class="thum">
+        <img src="icon/th1.webp" alt="">
+        <div class="time">11:11</div> </div>
+      <div class="v-info">
+        <div class="profile-p"><img src="icon/1.JPG" alt=""></div>
+        <div class="video-nameinfo">
+          <p class="titel-info">Hi Hlo Are You</p>
+          <p class="channel-info">Dhruv</p>
+          <p class="views">1.2M views</p>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="v-card">
+      
+
+      <div class="thum">
+        <img src="icon/th1.webp" alt="">
+        <div class="time">11:11</div> </div>
+      <div class="v-info">
+        <div class="profile-p"><img src="icon/1.JPG" alt=""></div>
+        <div class="video-nameinfo">
+          <p class="titel-info">Hi Hlo Are You</p>
+          <p class="channel-info">Dhruv</p>
+          <p class="views">1.2M views</p>
+          
+        </div>
+      </div>
+    </div>
+
+
+    <div class="v-card">
+      
+
+      <div class="thum">
+        <img src="icon/th1.webp" alt="">
+        <div class="time">11:11</div> </div>
+      <div class="v-info">
+        <div class="profile-p"><img src="icon/1.JPG" alt=""></div>
+        <div class="video-nameinfo">
+          <p class="titel-info">Hi Hlo Are You</p>
+          <p class="channel-info">Dhruv</p>
+          <p class="views">1.2M views</p>
+          
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  
+</body>
+</html>

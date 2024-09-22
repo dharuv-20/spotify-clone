@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .searchbar { 
+            height: 40px; /* Adjust height as needed */
+            width: 300px; /* Adjust width as needed */
+            margin-left: 5px;
+            border: 1px solid #ccc; /* Example border */
+            border-radius: 10px 0 0 10px;
+            padding: 10px; /* Adds space inside the search bar */
+            padding-left: 20px; /* Adds extra space in front of the input text */
+            box-sizing: border-box; /* Ensures padding doesn't affect overall width */
+            outline: none; /* Removes the default focus outline */
+            font-weight: bold; /* Makes the font bold */
+        }
+
+        /* Additional style to ensure no border on focus */
+        .searchbar:focus {
+            border: none;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" class="searchbar" placeholder="Search...">
+</body>
+</html>
